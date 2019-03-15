@@ -44,6 +44,13 @@
     <echo>${license}</echo>
   </target>
   
+  <target name="create_dummy-xml">
+    <echo file="${build.dir}/dummy.xml" encoding="UTF-8"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<dummy></dummy>
+]]></echo>
+    <echo message="writing file: ${build.dir}/dummy.xml"/>
+  </target>
+  
   <target name="dist" depends="clean,init,get-local-git-revision,load-license">
     <property name="zip" value="${name.short}_${revision}.zip"/>
     <property name="dest" value="${build.dir}/${name.short}"/>
