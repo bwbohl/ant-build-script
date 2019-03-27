@@ -26,6 +26,8 @@
     <delete dir="${build.dir}"/>
     <delete dir="${dist.dir}"/>
   </target>
+  
+  <!-- GIT -->
 
   <target name="get-local-git-revision">
     <description>Get the current git revision</description>
@@ -38,6 +40,23 @@
     <echo>Local revision: ${local.revision}</echo>
     <property name="revision" value="${local.revision}"/>
   </target>
+  
+  <target name="git-pull">
+    <exec executable="git" dir="submodules/kb-xml-schema/">
+      <arg value="pull"/>
+    </exec>
+  </target>
+  
+  <target name="git-checkout-master">
+    <property name="dir.path"/>
+    <?TODO how to submit params ?>
+    <exec executable="git" dir="${dir.path}">
+      <arg value="checkout"/>
+      <arg value="master"/>
+    </exec>
+  </target>
+  
+  <!-- /GIT -->
   
   <target name="load-license">
     <loadfile srcfile="${license.file.path}" encoding="utf-8" property="license"/>
